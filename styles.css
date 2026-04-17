@@ -7,39 +7,21 @@
 	box-sizing: border-box;
 }
 
-:root {	
-	--body-bg-color: #faf9f7;
-
-	--nav-width: 15rem;
-	--nav-bg-color: #1a1a1a;
-
-	--nav-link-v-margin: 1rem;
-	--nav-link-h-margin: 2rem;
-	--nav-link-height: 3rem;
-	--nav-link-border-radius: 1rem;
-	--nav-link-bg-color: purple;
-	--nav-link-font-size: 1.5rem;
-	--nav-link-font-color: white;
-
-	--main-v-margin: 3rem;
-	--main-h-margin: 1.5rem;
-}
-
 body {
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: var(--body-bg-color);
+	background-color: #f1f9f7;
 	display: grid;
-	grid-template-columns: var(--nav-width) 1fr 16rem;
+	grid-template-columns: 20rem 1fr 20rem;
 	grid-template-rows: auto 1fr;
 }
 
 #primary-nav {
 	grid-row: 1 / 3;
-	background-color: var(--nav-bg-color);
+	background-color: #1a1a1a;
 	padding: 1.75rem 1.25rem;
 	display: flex;
 	flex-direction: column;
@@ -48,16 +30,16 @@ body {
 
 #primary-nav>h3 {
 	font-family: "Courier New", monospace;
-	font-size: 0.75rem;
-	letter-spacing: 0.15rem;
+	font-size: 1.125rem;
+	letter-spacing: 0.2rem;
 	color: #666;
 	text-transform: uppercase;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.75rem;
 }
 
 #primary-nav>a {
 	font-family: Montserrat, serif;
-	font-size: 1rem;
+	font-size: 1.5rem;
 	color: #ccc;
         text-decoration: none;
 	padding: 0.5rem 0;
@@ -80,37 +62,44 @@ body {
 	grid-column: 2;
 	grid-row: 1;
 	border-bottom: 1px solid #e0ddd8;
-	padding: 1.5rem 2rem;
+	padding: 2rem 2.5rem;
 	display: flex;
 	align-items: center;
 }
 
 .title-bar>h1 {
 	font-family: Montserrat, serif;
-	font-size: 20px;
+	font-size: 2rem;
 	font-weight: 600;
 	color: 1a1a1a;
-	letter-spacing: 0.01rem;
+}
+
+.main-container { 
+	grid-column: 2;
+	grid-row: 2;
+	display: flex;
+	justify-content: center;
 }
 
 main {
-	grid-column: 2;
-	grid-row: 2;
-	padding: 1.75rem; 2rem;
+	padding: 2rem; 3rem;
+	width: 100%;
+	height: 100%;
+	max-width: 120rem;
 }
 
 main>p {
 	font-family: "DM Sans", sans-serif;
-	font-size: 0.9rem;
+	font-size: 1.25rem;
 	line-height: 1.8;
 	color: #444;
-	margin-bottom: 1rem;
+	margin-bottom: 1.6rem;
 }
 
 aside {
 	grid-row: 1 / 3;
 	border-left: 1px solid #e0ddd8;
-	padding: 1.5rem 1.25rem;
+	padding: 2rem 1.2rem;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
@@ -118,30 +107,30 @@ aside {
 
 aside>.author-card {
 	background-color: #f0ede8;
-	border-radius: 0.5rem;
-	padding: 1rem;
+	border-radius: 0.75rem;
+	padding: 1.25rem;
 }
 
 .author-card>.section-label {	
 	font-family: "Courier New", monospace;
-	font-size: 0.75rem;
-	letter-spacing: 0.15rem;
+	font-size: 1rem;
+	letter-spacing: 0.2rem;
 	text-transform: uppercase;
 	color: #999;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.75rem;
 }
 
 .author-card>.author-name {
 	font-family: Montserrat, sans-serif;
-	font-size: 1rem;
+	font-size: 1.25rem;
 	font-weight: bold;
 	color: #1a1a1a;
-	margin-bottom: 0.25rem;
+	margin-bottom: 0.4rem;
 }
 
 .author-card>.author-meta {
 	font-family: "Courier New", monospace;
-	font-size: 0.75rem;
+	font-size: 1rem;
 	color: #777;
 	line-height: 1.6;
 }
