@@ -6,21 +6,9 @@ const routes = {
 };
 
 async function navigate(path) {
-	const file = routes[path];
-
-	if (!file) {
-		document.querySelector('.title-bar').innerHTML = '';
-		document.querySelector('.main-container').innerHTML = '<p>Page not found.</p>';
-		return;
-	}
+	const file = routes[path] ?? '/pages/404.html';
 
 	const res = await fetch(file);
-
-	if (!res.ok) {
-		document.querySelector('.main-container').innerHTML = '<p>Failed to load page.</p>';
-		return;
-	}
-
 	const html = await res.text();
 	const parser = new DOMParser();
 	const doc = parser.parseFromString(html, 'text/html');
