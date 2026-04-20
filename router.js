@@ -2,6 +2,7 @@ const routes = {
 	'/': '/pages/home.html',
 	'/what-is-go': '/pages/what-is-go.html',
 	'/where-is-go-used': '/pages/where-is-go-used.html',
+	'/popularity-of-go': '/pages/popularity-of-go.html',
 	'/developer-tooling': '/pages/developer-tooling.html',
 };
 
