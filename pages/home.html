@@ -19,15 +19,19 @@ figure.header>img {
 figure.header>figcaption {
 	font-family: "DM Sans", sans-serif;
 	text-align: center;
-	color: #444;
 	font-size: 1.25rem;
+}
+
+figure.header>figcaption>a {
+        text-decoration: underline;
+	color: #444;
 }
 </style>
 	<main>
 		<p>The Go programming language has found its niche in several parts of software development. It can be be seen used from Command Line Interfaces (CLIs) to developing a website's backend as well as being used to develop Docker—an application used to containerize and isolate other applications.</p>
 		<figure class="header">
-			<img class="header" src="https://go.dev/blog/gopher/header.jpg">
-			<figcaption>The Go Gopher</figcaption>
+			<img class="header" src="https://go.dev/blog/gopher/header.jpg" alt="Picture of several Go gophers">
+			<figcaption><a target="_blank" rel="noopener noreferrer" href="https://go.dev/blog/gopher">The Go Gopher</a></figcaption>
 		</figure>
 		<p>I hope this project will serve as a gateway for those that have some familiarity with other programming languages to find out what Go is and why Go is used professionally. My project will show why Go is becoming more popular as time passes, provide context as to why Go was developed, show the use cases of Go, and show the array of tools available to developers to make writing Go code more convenient.</p>
 		<p>Go's popularity can be attributed to several key things. One of its most notable features is its native concurrency model. With the use of one keyword, a programmer can call a function concurrently. Go also provides tools to make working with concurrent functions as easy as it can be. Another feature is that Go has a garbage collector, so the programmer does not need to worry about memory management. Unlike many other garbage collected languages however, Go is also compiled, meaning that the speed of running code is near that of C and C++. An additional feature that Go has is its emphasis on fast compile times. Compared to C and C++—which in a large project can make you wait sometimes several minutes—Go compiles in only a few seconds. One more feature that makes Go so useful is that it compiles to a single binary. This makes it very simple for putting a Go-made application on a variety of servers because the system admins do not need to worry about missing libraries required for the program to run.</p>
