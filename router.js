@@ -4,6 +4,7 @@ const routes = {
 	'/where-is-go-used': '/pages/where-is-go-used.html',
 	'/popularity-of-go': '/pages/popularity-of-go.html',
 	'/developer-tooling': '/pages/developer-tooling.html',
+	'/references': '/pages/references.html',
 };
 
 async function navigate(path) {
