@@ -2,34 +2,158 @@
 	<h1>Popularity of Go</h1>
 </div>
 <div class="main-container">
+	<style>
+		.graph-container {
+			width: 100%;
+			max-width: 48rem;
+			border-radius: 1rem;
+			background-color: #1a1a1a;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 1rem 0;
+			margin: 0 auto 1.6rem;
+		}
+
+		.graph-container>figcaption {
+			font-family: "DM Sans", sans-serif;
+			text-align: center;
+			font-size: 0.8rem;
+			color: #fff;
+		}
+
+		.table-container {
+			width: 100%;
+			max-width: 48rem;
+			margin: 0 auto;
+		}
+
+		.table-container>p {
+			margin-top: 1rem;
+			font-family: "DM Sans", sans-serif;
+			text-align: center;
+			font-size: 0.8rem;
+		}
+
+		.table-container>table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 1.2rem;
+			color: #444;
+			background: transparent;
+			table-layout: fixed;
+		}
+
+		.table-container>table th,
+		.table-container>table td {
+			padding: 0.75rem 1rem;
+			border: 1px solid #1a1a1a;
+			text-align: center;
+		}
+
+		.table-container>table th {
+			font-weight: 600;
+		}
+
+		.table-container>table td {
+			text-align: right;
+		}
+	</style>
 	<main>
 		<p>The popularity of Go can be attributed to many factors.</p>
-		<p>When Go was announced in 2009, some people were excited for a new Google-backed language, but many were skeptical \[JOSHI]. Those that were excited were because of decisions that were made during the conception of this language.</p>
-		<p>In 2007, Robert Griesemer, Rob Pike, and Ken Thompson expressed their frustrations with each other concerning the current technologies they were at Google. \[JOSHI], \[PIKE]. Some specific pain points were slow build times, poor program understandably, and difficulty writing automatic tools \[PIKE]. On top of this, most languages at the time did not handle the of multi-core processors, massively networked systems, huge computation clusters, and modern web programming models \[PIKE]. They wanted a modern language that was built to function during the modern era.</p>
-		<p>Go was designed with a garbage collector for less developer overhead, built-in and effective concurrency model that works well with multi-core processors, better methods of managing dependencies compared to the current environment, allow for architecture to adapt and change quickly and with as few difficulties as possible, and allowing effective methods to communicate between components \[PIKE]. This design was critical for Go's growth and success.</p>
-		<p>With version 1.0 being released in 2012, the larger programming community realized that this wasn't just some one-off language that Google was experimenting with—it was a language that was going to remain stable throughout its development \[Go 1].</p>
-		<p>Evidence of Go's newfound trust was evident when Docker—which is currently the most popular Cloud development technology \[2025 Dev Surv]—was built and released in 2013 using Go \[dotcloudtv], \["What is Docker"]. Docker runs applications in a container, meaning if it works on one machine, it should work on any machine. Docker's growth was accelerated further after the release of Kubernetes 1.0 in 2015 \[LARDINIOS]. Because Docker and Kubernetes (K8s) are both built using Go, these projects further pushed Go into the spotlight of the cloud's programming language.</p>
-		<p>Though from release, Go has been struggling from a lack of generic functions—functions that could be called without specifying a type. This was a major annoyance among Go developers. Though, for release go1.18 in 2022, that all changed \[The Go Team]. Generics were finally added into the language specification. When looking at 2022, you can see a major jump in Go developers, likely because of how impactful this change was.</p>
+		<p>When Go was announced in 2009, some people were excited for a new Google-backed language, but many were
+			skeptical \[JOSHI]. Those that were excited were because of decisions that were made during the conception
+			of this language.</p>
+		<p>In 2007, Robert Griesemer, Rob Pike, and Ken Thompson expressed their frustrations with each other concerning
+			the current technologies they were at Google. \[JOSHI], \[PIKE]. Some specific pain points were slow build
+			times, poor program understandably, and difficulty writing automatic tools \[PIKE]. On top of this, most
+			languages at the time did not handle the of multi-core processors, massively networked systems, huge
+			computation clusters, and modern web programming models \[PIKE]. They wanted a modern language that was
+			built to function during the modern era.</p>
+		<p>Go was designed with a garbage collector for less developer overhead, built-in and effective concurrency
+			model that works well with multi-core processors, better methods of managing dependencies compared to the
+			current environment, allow for architecture to adapt and change quickly and with as few difficulties as
+			possible, and allowing effective methods to communicate between components \[PIKE]. This design was critical
+			for Go's growth and success.</p>
+		<p>With version 1.0 being released in 2012, the larger programming community realized that this wasn't just some
+			one-off language that Google was experimenting with—it was a language that was going to remain stable
+			throughout its development \[Go 1].</p>
+		<p>Evidence of Go's newfound trust was evident when Docker—which is currently the most popular Cloud development
+			technology \[2025 Dev Surv]—was built and released in 2013 using Go \[dotcloudtv], \["What is Docker"].
+			Docker runs applications in a container, meaning if it works on one machine, it should work on any machine.
+			Docker's growth was accelerated further after the release of Kubernetes 1.0 in 2015 \[LARDINIOS]. Because
+			Docker and Kubernetes (K8s) are both built using Go, these projects further pushed Go into the spotlight of
+			the cloud's programming language.</p>
+		<p>Though from release, Go has been struggling from a lack of generic functions—functions that could be called
+			without specifying a type. This was a major annoyance among Go developers. Though, for release go1.18 in
+			2022, that all changed \[The Go Team]. Generics were finally added into the language specification. When
+			looking at 2022, you can see a major jump in Go developers, likely because of how impactful this change was.
+		</p>
 
-		<div class="graph-container">
+		<figure class="graph-container">
 			<canvas id="graph"></canvas>
-		</div>
+			<figcaption>Fig. [X]. Percentage of developers using Go, 2017-2025 [X]–[X]</figcaption>
+		</figure>
 
 		<div class="table-container">
 			<table>
-				<thead><tr><th>Year</th><th>% of developers</th><th>% of professional developers</th></tr></thead>
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>% of developers</th>
+						<th>% of professional developers</th>
+					</tr>
+				</thead>
 				<tbody>
-					<tr><td>2017</td><td>4.3%</td><td>4.6%</td></tr>
-					<tr><td>2018</td><td>7.1%</td><td>7.2%</td></tr>
-					<tr><td>2019</td><td>8.2%</td><td>8.8%</td></tr>
-					<tr><td>2020</td><td>8.8%</td><td>9.4%</td></tr>
-					<tr><td>2021</td><td>9.55%</td><td>10.51%</td></tr>
-					<tr><td>2022</td><td>11.15%</td><td>11.83%</td></tr>
-					<tr><td>2023</td><td>13.24%</td><td>14.32%</td></tr>
-					<tr><td>2024</td><td>13.5%</td><td>14.4%</td></tr>
-					<tr><td>2025</td><td>16.4%</td><td>17.4%</td></tr>
+					<tr>
+						<td>2017</td>
+						<td>4.3%</td>
+						<td>4.6%</td>
+					</tr>
+					<tr>
+						<td>2018</td>
+						<td>7.1%</td>
+						<td>7.2%</td>
+					</tr>
+					<tr>
+						<td>2019</td>
+						<td>8.2%</td>
+						<td>8.8%</td>
+					</tr>
+					<tr>
+						<td>2020</td>
+						<td>8.8%</td>
+						<td>9.4%</td>
+					</tr>
+					<tr>
+						<td>2021</td>
+						<td>9.55%</td>
+						<td>10.51%</td>
+					</tr>
+					<tr>
+						<td>2022</td>
+						<td>11.15%</td>
+						<td>11.83%</td>
+					</tr>
+					<tr>
+						<td>2023</td>
+						<td>13.24%</td>
+						<td>14.32%</td>
+					</tr>
+					<tr>
+						<td>2024</td>
+						<td>13.5%</td>
+						<td>14.4%</td>
+					</tr>
+					<tr>
+						<td>2025</td>
+						<td>16.4%</td>
+						<td>17.4%</td>
+					</tr>
 				</tbody>
-			</table
+			</table>
+			<p>Table [X]. Percentage of developers using Go, 2017-2025 [X]–[X]</p>
 		</div>
 	</main>
 </div>

@@ -28,6 +28,7 @@ const setupChart = () => {
 		]
 	};
 
+	/** @type {HTMLCanvasElement|null} */
 	const canvas = document.getElementById("graph");
 
 	if (!canvas) {
@@ -35,6 +36,7 @@ const setupChart = () => {
 		return;
 	}
 
+	/** @type {CanvasRenderingContext2D} */
 	const ctx = canvas.getContext("2d");
 	let DPR = window.devicePixelRatio || 1;
 
@@ -68,7 +70,7 @@ const setupChart = () => {
 		const pts = allPoints();
 		if (!pts.length) return { minX: 2018, maxX: 2024, minY: 0, maxY: 100 };
 		const years = pts.map(p => p.year);
-		const percents = pts.map(p => p.percents);
+		const percents = pts.map(p => p.percent);
 		let minY = Math.min(...percents), maxY = Math.max(...percents);
 		const pad = Math.max((maxY - minY) * 0.18, 5);
 		return {
@@ -89,7 +91,7 @@ const setupChart = () => {
 		const range = max - min;
 		const raw = range / (count - 1);
 		const mag = Math.pow(10, Math.floor(Math.log10(raw)));
-		const nice = [1, 2, 2.5, 5, 10].map(f => f*mag).find(f => f >= raw) || raw;
+		const nice = [1, 2, 2.5, 5, 10].map(f => f * mag).find(f => f >= raw) || raw;
 		const start = Math.ceil(min / nice) * nice;
 		const ticks = [];
 		for (let v = start; v <= max + 1e-9; v += nice) ticks.push(+v.toFixed(10));
@@ -103,21 +105,21 @@ const setupChart = () => {
 		const range = dataRange();
 
 		// Background
-		ctx.fillStyle = "#f1f9f7";
+		ctx.fillStyle = "#1a1a1a";
 		ctx.fillRect(0, 0, W, H);
 
 		// Grid
 		const yTicks = niceYTicks(range.minY, range.maxY, 6);
 		ctx.save();
-		ctx.strokeStyle = "#000000";
+		ctx.strokeStyle = "#fff";
 		ctx.lineWidth = 1;
 		ctx.setLineDash([4, 4]);
 		ctx.font = "DM Mono, monospace";
-		ctx.fillStyle = "#5a5c70";
+		ctx.fillStyle = "#fff";
 		ctx.textAlign = "right";
 
 		yTicks.forEach(v => {
-			const { py } = toCanvas(range.minX, v, range, { cW, cH});
+			const { py } = toCanvas(range.minX, v, range, { cW, cH });
 			ctx.beginPath();
 			ctx.moveTo(padding.left, padding.top + (1 - (v - range.minY) / (range.maxY - range.minY)) * cH);
 			ctx.lineTo(padding.left + cW, padding.top + (1 - (v - range.minY) / (range.maxY - range.minY)) * cH);
@@ -128,17 +130,17 @@ const setupChart = () => {
 
 		// X axis ticks
 		const allYears = allPoints().map(p => p.year);
-		const uniqueYears = allYears.length ? [...new Set(allYears)].sort((a, b) => a-b) : niceYTicks(range.minX + 0.3, range.maxX - 0.3, 5).map(Math.round);
+		const uniqueYears = allYears.length ? [...new Set(allYears)].sort((a, b) => a - b) : niceYTicks(range.minX + 0.3, range.maxX - 0.3, 5).map(Math.round);
 
 		ctx.save();
-		ctx.fillStyle = "#000";
+		ctx.fillStyle = "#fff";
 		ctx.font = "11px DM Mono, monospace";
 		ctx.textAlign = "center";
 		uniqueYears.forEach(yr => {
 			const { px } = toCanvas(yr, 0, range, { cW, cH });
 			ctx.fillText(yr, px, padding.top + cH + 22);
 			ctx.save();
-			ctx.strokeStyle = "#123456";
+			ctx.strokeStyle = "#fff";
 			ctx.lineWidth = 1;
 			ctx.setLineDash([4, 4]);
 			ctx.beginPath();
@@ -165,19 +167,56 @@ const setupChart = () => {
 
 		// Axes border
 		ctx.save();
-		ctx.strokeStyle = "#000";
+		ctx.strokeStyle = "#fff";
 		ctx.lineWidth = 1;
 		ctx.strokeRect(padding.left, padding.top, cW, cH);
 		ctx.restore();
 
+		// Legend
+		const legendItems = [
+			{ label: "All developers", color: "#0000ff" },
+			{ label: "Professional developers", color: "#ff0000" }
+		];
+		ctx.save();
+		ctx.font = "11px DM Mono, monospace";
+		ctx.textAlign = "left";
+		legendItems.forEach((item, i) => {
+			const x = padding.left + 10;
+			const y = padding.top + 18 + i * 22;
+			// colored line swatch
+			ctx.strokeStyle = item.color;
+			ctx.lineWidth = 2.5;
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x + 20, y);
+			ctx.stroke();
+			// dot
+			ctx.beginPath();
+			ctx.arc(x + 10, y, 4, 0, Math.PI * 2);
+			ctx.fillStyle = item.color;
+			ctx.fill();
+			// text background
+			const textX = x + 28;
+			const textWidth = ctx.measureText(item.label).width;
+			ctx.fillStyle = "rgba(0, 0, 0, 0.55)";
+			ctx.beginPath();
+			ctx.roundRect(textX - 4, y - 10, textWidth + 8, 20, 4);
+			ctx.fill();
+			// text
+			ctx.fillStyle = "#fff";
+			ctx.fillText(item.label, textX, y + 4);
+		});
+		ctx.restore();
+
 		// Series lines + points
+		/** @type {Array<keyof typeof series>} */
 		const names = Object.keys(series);
 		names.forEach((name, si) => {
 			const pts = [...series[name]].sort((a, b) => a.year - b.year);
 			if (!pts.length) return;
-			const color = "#0f0";
+			const color = si == 0 ? "#0000ff" : "#ff0000";
 
-			// gradient to fill under line
+			/*// gradient to fill under line
 			const gradient = ctx.createLinearGradient(0, padding.top, 0, padding.top + cH);
 			gradient.addColorStop(0, color + '28');
 			gradient.addColorStop(1, color + '00');
@@ -187,14 +226,14 @@ const setupChart = () => {
 				const { px, py } = toCanvas(p.year, p.percent, range, { cW, cH });
 				i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
 			});
-			const lastPt = toCanvas(pts[pts.length - 1].year, pts[pts.length-1].percent, range, { cW, cH });
+			const lastPt = toCanvas(pts[pts.length - 1].year, pts[pts.length - 1].percent, range, { cW, cH });
 			const firstPt = toCanvas(pts[0].year, pts[0].percent, range, { cW, cH });
 			ctx.lineTo(lastPt.px, padding.top + cH);
 			ctx.lineTo(firstPt.px, padding.top + cH);
 			ctx.closePath();
 			ctx.fillStyle = gradient;
 			ctx.fill();
-			ctx.restore();
+			ctx.restore();*/
 
 			// line
 			ctx.save();
@@ -217,7 +256,7 @@ const setupChart = () => {
 				ctx.save();
 				ctx.beginPath();
 				ctx.arc(px, py, 5, 0, Math.PI * 2);
-				ctx.fillStyle = "#444";
+				ctx.fillStyle = color;
 				ctx.fill();
 				ctx.strokeStyle = color;
 				ctx.lineWidth = 2;
@@ -230,7 +269,7 @@ const setupChart = () => {
 		ctx.save();
 		ctx.translate(14, padding.top + cH / 2);
 		ctx.rotate(-Math.PI / 2);
-		ctx.fillStyle = "#000";
+		ctx.fillStyle = "#fff";
 		ctx.font = "11px DM Mono, monospace";
 		ctx.textAlign = "center";
 		ctx.fillText("PERCENT (%)", 0, 0);
@@ -238,7 +277,7 @@ const setupChart = () => {
 
 		// X axis label
 		ctx.save();
-		ctx.fillStyle = "#000";
+		ctx.fillStyle = "#fff";
 		ctx.font = "11px DM Mono, monospace";
 		ctx.textAlign = "center";
 		ctx.fillText("YEAR", padding.left + cW / 2, H - 8);
