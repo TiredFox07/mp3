@@ -1,4 +1,8 @@
-window.navigation.addEventListener("navigate", (event) => {
+document.addEventListener("load", (_) => {
+	setTimeout(setupChart, 500);
+})
+
+window.navigation.addEventListener("navigate", (_) => {
 	setTimeout(setupChart, 500);
 });
 
