@@ -1,8 +1,4 @@
-document.addEventListener("load", (_) => {
-	setTimeout(setupChart, 500);
-})
-
-window.navigation.addEventListener("navigate", (_) => {
+document.addEventListener("new-page", (_) => {
 	setTimeout(setupChart, 500);
 });
 

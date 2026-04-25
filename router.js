@@ -23,6 +23,8 @@ async function navigate(path) {
 	});
 
 	window.scrollTo(0, 0);
+
+	document.dispatchEvent(new CustomEvent("new-page"))
 }
 
 document.querySelectorAll('a[data-route]').forEach(a => {
