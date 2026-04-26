@@ -65,35 +65,23 @@
 		}
 	</style>
 	<main>
-		<p>The popularity of Go can be attributed to many factors.</p>
-		<p>When Go was announced in 2009, some people were excited for a new Google-backed language, but many were
-			skeptical \[JOSHI]. Those that were excited were because of decisions that were made during the conception
-			of this language.</p>
-		<p>In 2007, Robert Griesemer, Rob Pike, and Ken Thompson expressed their frustrations with each other concerning
-			the current technologies they were at Google. \[JOSHI], \[PIKE]. Some specific pain points were slow build
-			times, poor program understandably, and difficulty writing automatic tools \[PIKE]. On top of this, most
-			languages at the time did not handle the of multi-core processors, massively networked systems, huge
-			computation clusters, and modern web programming models \[PIKE]. They wanted a modern language that was
-			built to function during the modern era.</p>
-		<p>Go was designed with a garbage collector for less developer overhead, built-in and effective concurrency
-			model that works well with multi-core processors, better methods of managing dependencies compared to the
-			current environment, allow for architecture to adapt and change quickly and with as few difficulties as
-			possible, and allowing effective methods to communicate between components \[PIKE]. This design was critical
-			for Go's growth and success.</p>
-		<p>With version 1.0 being released in 2012, the larger programming community realized that this wasn't just some
-			one-off language that Google was experimenting with—it was a language that was going to remain stable
-			throughout its development \[Go 1].</p>
-		<p>Evidence of Go's newfound trust was evident when Docker—which is currently the most popular Cloud development
-			technology \[2025 Dev Surv]—was built and released in 2013 using Go \[dotcloudtv], \["What is Docker"].
-			Docker runs applications in a container, meaning if it works on one machine, it should work on any machine.
-			Docker's growth was accelerated further after the release of Kubernetes 1.0 in 2015 \[LARDINIOS]. Because
-			Docker and Kubernetes (K8s) are both built using Go, these projects further pushed Go into the spotlight of
-			the cloud's programming language.</p>
-		<p>Though from release, Go has been struggling from a lack of generic functions—functions that could be called
-			without specifying a type. This was a major annoyance among Go developers. Though, for release go1.18 in
-			2022, that all changed \[The Go Team]. Generics were finally added into the language specification. When
-			looking at 2022, you can see a major jump in Go developers, likely because of how impactful this change was.
-		</p>
+		<p>The popularity of Go can be attributed to many factors, but many stem from the history of its development.</p>
+		<p>When Go was announced in 2009, some people were excited for a new Google-backed language, but many were skeptical \[JOSHI]. The few that were excited was because of decisions that the creators of Go made while designing this language.</p>
+		<p>In 2007, the three eventual primary creators of Go—Robert Griesemer, Rob Pike, and Ken Thomson—expressed their frustrations with each other concerning the technologies the three were using at Google \[JOSHI], \[PIKE]. The current technologies they were using struggled with slow build times, obfuscated and lengthy algorithms, and difficulty writing automated tools \[PIKE].</p>
+		<p>Most of the programming languages that major tech corporations use were designed for an era that had already passed. Things like multicore processors, giant networked systems, huge computation clusters, and modern web programming models were recent additions that older languages do not handle conveniently.</p>
+		<p>Robert Griesemer, Rob Pike, and Ken Thomson needed a modern language built to handle the requirements of the present.</p>
+		<p>They designed Go to have a garbage collector, built-in concurrency, effective dependency management, quick development time, and easy to use interfaces between components \[PIKE].</p>
+		<p>Go's garbage collector allows developers to write code without having to manage memory manually. This increases developer velocity allowing them to write business logic instead of preventing memory leaks.</p>
+		<p>Go has built-in concurrency models such as goroutines for running concurrent functions, channels for sending data between different goroutines, and other data models for ensuring proper code execution. All of these tools work together to provide developers one of the best experiences working with concurrent code.</p>
+		<p>All programming languages need a way to import external libraries to use with their code. Go makes use of the internet to import the packages you need. This makes it simple for anyone anytime to get the libraries they need.</p>
+		<p>To further extend developer velocity while using Go, they made sure to keep annoyances few and far between. The designers did this in a multitude of ways, but the net effect of which is frustration-free development.</p>
+		<p>Another thing Go does well is how simple it is to interact for foreign components. Go makes this simple by making having an easy-to-use interface system that allows functions to accept inputs that fit to a specific pattern. Many languages have a similar system, but Go makes it obvious what's happening and doesn't try to hide things from the developer.</p>
+		<p>All of these design decisions were necessary and contributed toward Go's growth and success.</p>
+		<p>Version 1.0 of Go released in 2012. This is when the "Go 1" announcement was made that promised stability as future versions are released. All working code made with version 1.0 will work with 1.1, 1.2, 1.3, etc. \[Go 1]. This guarantee of stability was another factor in the growing popularity of this language.</p>
+		<p>The first major open source application made with Go was Docker released in 2013 \[dotcloudtv]. Docker is currently the most popular Cloud development technology \[2025 Dev Surv]. Docker is an application that isolates and runs other applications through containers. By doing this, an application relies less on the machine it is ran on and allows for a more streamlined method for hosting applications \["What is Docker"].</p>
+		<p>Another boost that Go had was another major open source application Kubernetes (K8s) 1.0 released in 2015 \[LARDINIOS]. K8s is an application that works with Docker to manage containers on a mass scale.</p>
+		<p>With two major open source applications being developed with Go, there were now major projects backing this language. These applications pushed Go further into the spotlight of the programming language of the cloud.</p>
+		<p>Despite all of the success Go has had since release, it was still struggling because it did not support generic functions—functions that do not rely on a specific type but rather a category of type that all yield to a specific standard. This was an annoyance among Go developers until release go1.18 in 2022 \[The Go Team]. There was a surge of develops using go around 2022, likely because of this change \[Fig. X] \[Table X].</p>
 
 		<figure class="graph-container">
 			<canvas id="graph"></canvas>
