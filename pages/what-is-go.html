@@ -2,27 +2,42 @@
 	<h1>What is Go?</h1>
 </div>
 <div class="main-container">
+<style>
+p>code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #1a1b26;
+  color: #7dcfff;
+  padding: 0.06rem 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.88em;
+}
+
+pre.code-block {
+	font-size: 1.4rem;
+	margin-bottom: 1.6rem;
+}
+
+pre.code-block>code {
+	border-radius: 1rem;
+}
+</style>
 	<main>
-		<p>This is a paragraph</p>
-		<p>
-			Lorem ipsum dolor sit amet,
-			consectetur adipiscing elit,
-			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-			Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		</p>
-		<a href="https://survey.stackoverflow.co/2020">
-			survey.stackoverflow.co/2020
-		</a>
-		<a href="https://survey.stackoverflow.co/2021">
-			survey.stackoverflow.co/2021
-		</a>
-		<a href="https://survey.stackoverflow.co/2025">
-			survey.stackoverflow.co/2025
-		</a>
-		<a href="https://jsschools.com/golang/the-untold-story-of-golangs-origin-how-it-became">
-			jsschools.com/golang/the-untold-story-of-golangs-origin-how-it-became
-		</a>
+		<div class="margin"></div>
+		<p>Go is a general purpose, garbage-collected, and strongly typed programming language with built-in models for building concurrent programs with specifically systems programming in mind \[Spec]. Go was designed because of frustrations had with the current technologies of the time \[PIKE].</p>
+
+		<p>Go has an emphasis on simple syntax \[Spec]. Someone with minimal knowledge of the language should be able to parse most of the code written in the language.</p>
+		<pre class="code-block" data-src="/code/simple.go"></pre>
+		<p>The given example is simple, though it shows how to declare a package, import external functions, create and assign variables, and print text to the console. Despite not knowing how to write any Go code, you can make assumptions that give you an understanding of what code the code is doing. Go was designed with this principle in mind.</p>
+
+		<p>Go also has a unique approach to handling errors.</p>
+		<pre class="code-block" data-src="/code/error.go"></pre>
+		<p>In this example, a <code>divide</code> function is called. However, instead of crashing the program when the denominator is zero, it simply returns an error. By convention, no error is represented with <code>nil</code>. So after every function call that has a chance to produce an error, we check if one actually occurred. If so, we handle it however we want, and if not, we resume the rest of the program as usual. Many developers have expressed that they feel that Go's error handling is too verbose \[Merrick]. However, Go's error handling was designed this way to be as explicit as possible. Without this explicitness, some functions could produce errors that are never caught and thus crash the program.</p>
+
+		<p>Another defining feature of Go is how handles concurrency within programs.</p>
+		<pre class="code-block" data-src="/code/concurrency.go"></pre>
+		<p>In this example, we call two functions concurrently with the <code>go</code> keyword which creates a <code>goroutine</code>. Note that concurrency is not parallelism. All code running parallel is concurrent, but not all concurrent code is ran in parallel. Go's scheduler will decide if a goroutine is ran parallel or not depending on a variety of factors. If a goroutine is not ran in parallel, the Go scheduler will jump between different tasks in order to complete them all. In this case, however, only one part of the code is being executed at once, and thus the code is not running in parallel. If Go's scheduler wants to run two goroutines concurrently, then it will run each goroutine on a processor thread each.</p>
+
+		<p>These are some of the basics of Go. My recommendation to learn Go however would be to refer to \[a tour of Go]. Go is meant to be simple to learn and scale effectively, so many practices taught will reflect that.</p>
+		<div class="margin"></div>
 	</main>
 </div>

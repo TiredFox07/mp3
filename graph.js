@@ -1,7 +1,3 @@
-document.addEventListener("new-page", (_) => {
-	setTimeout(setupChart, 500);
-});
-
 const setupChart = () => {
 	const series = {
 		"All developers": [
@@ -286,3 +282,5 @@ const setupChart = () => {
 
 	resizeCanvas();
 };
+
+document.addEventListener("new-page", setupChart);
