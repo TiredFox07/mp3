@@ -3,17 +3,17 @@
 </div>
 <div class="main-container">
 	<main>
-		<p>This is a paragraph</p>
-		<p>
-			Lorem ipsum dolor sit amet,
-			consectetur adipiscing elit,
-			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-			Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		</p>
-		<a href="https://thenewstack.io/go-the-programming-language-of-the-cloud/">
-			thenewstack.io/go-the-programming-language-of-the-cloud/
-		</a>
+		<div class="margin"></div>
+		<p>Go is used across several different domains of software development. Go is used to build cloud infrastructure, backends for web services, and Command Line Interfaces (CLIs). There are many applications that use Go to build reliable programs that the larger tech world rely on every day.</p>
+		<p>Go's impact on modern infrastructure can be seen through some of its most well-known open source projects: Docker, Kubernetes (K8s), and Terraform.</p>
+		<p>Docker is an application that containerizes other applications as well as their dependencies. Once they are containerized, they can be run wherever they need to be run \["What is Docker"]. Docker is written entirely in Go \[moby]. Go was chosen to write Docker because of its performance and the system-level access it provides to interact with the kernel.</p>
+		<p>Another application written in Go is K8s \[kubernetes]. K8s is used to manage the deployment, scaling, and operation of containers across multiple machines \[prod-grade container orch]. K8s plays right into Go's emphasis on systems programming. K8s needs to manage several containers across a variety of devices which fits extremely well with Go's concurrency model.</p>
+		<p>Terraform is also written with Go \[hashicorp]. Terraform provides infrastructure as code, meaning that instead of manually configuring and setting up multiple services, Terraform can do all of that for you programmatically. This is important because it means that managing services is just like managing code. It doesn't matter how many services you have, once it is configured to work once, you can be sure that it works repeatedly. Go makes the most sense because of its concurrency model required due to managing several services.</p>
+		<p>Go is used internally within multiple companies.</p>
+		<p>Google—the company that created the Go programming language—is an excellent example of a big tech company that actually uses Go \[Pike]. Google has millions of lines of code managed by thousands of software engineers \[Pike]. They needed a language that would help simplify their code base while keeping it as performant as before \[Pike]. That is why they created Go and why it is so widely used within Google.</p>
+		<p>Cloudflare also uses Go for many of their services \[Grahmm]. Originally, only one tool was developed using Go, however, it had eventually grown into being used by several key parts of Cloudflare. These parts include: DNS infrastructure, SSL, load tests, and compression for services with high-latency \[Grahmm]. Go was a natural fit for Cloudflare because the application needs to manage large numbers of concurrent requests—something that Go is great at—as well as reducing developer complexity by having a garbage collector handle memory management \[Grahmm].</p>
+		<p>Dropbox is another company that now relies on Go for its operations \[Lee]. Prior to using Go, Dropbox used Python for its services because of the ability to develop quickly \[Lee]. Eventually, the performance requirements of some of their services became too high for Python to handle, so Dropbox then decided to start rewriting their most critical services in Go \[Lee]. Go provided Dropbox with higher performance and a better concurrency model.</p>
+		<p>The common thread between all of these companies is why Go was chosen—high performance, easy concurrency, and simplicity of writing code. Go was designed specifically to fit the needs of these companies, so it's clear why these companies have grown to depend so much on Go.</p>
+		<div class="margin"></div>
 	</main>
 </div>
