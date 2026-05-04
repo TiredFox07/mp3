@@ -2,18 +2,25 @@
 	<h1>Developer Tooling</h1>
 </div>
 <div class="main-container">
+<style>
+p>code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #1a1b26;
+  color: #7dcfff;
+  padding: 0.06rem 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.88em;
+}
+</style>
 	<main>
-		<p>This is a paragraph</p>
-		<p>
-			Lorem ipsum dolor sit amet,
-			consectetur adipiscing elit,
-			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-			Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		</p>
-		<p>
-			Bolotnikov, I. V., and Borodin, A. E.. “Interprocedural Static Analysis for Finding Bugs in Go Programs.”
-		</p>
+		<div class="margin"></div>
+		<p>When you download Go, you do not only get the compiler; you get a variety of tools that help contribute to making writing Go as efficient as possible.</p>
+		<p>The first major tool is <code>gofmt</code>. <code>gofmt</code> is a tool that automates the formatting of all Go code. This tool eliminates style debates between developers. The correct format is the format given when you run <code>gofmt</code>. Pike says that he and many others within the Go community believe that this is the best tool for Go despite not actually being part of the language [3].</p>
+		<p>Another major tool used among Go developers is <code>go test</code>. <code>go test</code> is a testing framework built right into Go. Many other languages require the use of external testing solutions; Go's is built-in [27]. Having it built into the language removes that initial barrier of needing a testing framework to test code. Beyond that, the <code>testing</code> package provides many of the tools a developer would need to properly test their code. This ties in to Go's philosophy of wanting everything a developer would need out of the box.</p>
+		<p>Other languages like Python and Java require a runtime environment in order to execute programs, however, Go differs because it is packaged with the <code>go build</code> command. <code>go build</code> builds your Go program into a single executable binary that does not rely on external libraries [28]. This single executable removes the dependency on an external program that runs the code for you; it's all bundled into one.</p>
+		<p>Every sufficiently complex program will eventually depend on code written by someone else or external third-party libraries; Go uses the <code>go mod</code> command to manage project dependencies. Dependencies are stored in a <code>go.mod</code> file that explicitly states what the project depends on [29]. This fixes the problem of having different versions of dependencies, because the versions of the dependencies are centralized into a single file.</p>
+		<p>Unlike the other tools, a developer never intentionally runs <code>gopls</code>. <code>gopls</code> is the official Go Language Server that allows IDEs to provide services like auto-completion, error highlighting, and jump-to-definition [30]. Because it is developed by the Go team, it is always in sync with the latest version of the language. This reinforces the Go toolchain theme that everything you could need to develop a Go program is available out of the box.</p>
+		<p>These tools work in conjunction to provide the best experience a developer could have immediately after downloading. This is at the core of Go's philosophy: simplicity. Having everything provided in one simple download, less time is spent on setting up and more time is spent writing the code that will run the project.</p>
+		<div class="margin"></div>
 	</main>
 </div>
